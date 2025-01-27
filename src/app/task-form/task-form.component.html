@@ -1,0 +1,18 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title:</label>
+      <input formControlName="title" id="title" placeholder="Enter task title">
+      <div *ngIf="taskForm.get('title').invalid && taskForm.get('title').touched">
+        Title is required
+      </div>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea formControlName="description" id="description" placeholder="Enter task description"></textarea>
+      <div *ngIf="taskForm.get('description').invalid && taskForm.get('description').touched">
+        Description must be at least 10 characters
+      </div>
+    </div>
+    <button type="submit" [disabled]="taskForm.invalid">Submit</button>
+  </form>
+  
